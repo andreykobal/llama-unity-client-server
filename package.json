@@ -1,0 +1,19 @@
+{
+  "name": "my-llama",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "author": "Andreas Kobal <kobalandrey@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "child_process": "^1.0.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "http": "^0.0.1-security",
+    "path": "^0.12.7",
+    "readline": "^1.3.0",
+    "socket.io": "^4.7.2",
+    "socket.io-client": "^4.7.2"
+  }
+}
