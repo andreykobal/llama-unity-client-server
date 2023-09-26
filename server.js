@@ -18,7 +18,7 @@ const io = new Server(server, {
     methods: ['GET', 'POST']
   }
 });
-const PORT = 3001;
+const PORT = 80;
 
 app.use(bodyParser.json());
 
