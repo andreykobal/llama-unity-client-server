@@ -7,7 +7,7 @@ This project is a Node.js wrapper for interacting with a C++ program (llama) usi
 Clone the repository to your local machine.
 
 ```bash
-git clone <repo_url>
+git clone https://github.com/andreykobal/llama-unity-client-server
 ```
 
 ### Prerequisites
