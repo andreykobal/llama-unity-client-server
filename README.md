@@ -1,4 +1,4 @@
-# Project: Node.js Wrapper for Llama C++ with Unity Client
+# Node.js Wrapper for Llama C++ with Unity Client
 
 This project is a Node.js wrapper for interacting with a C++ program (llama) using Socket.IO, which allows communication between the server and a Unity client.
 
