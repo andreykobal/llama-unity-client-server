@@ -62,4 +62,11 @@ public class SocketClient : MonoBehaviour
             inputField.text = "";
         }
     }
+    void OnDestroy()
+    {
+        if (socket != null)
+        {
+            socket.DisconnectAsync();
+        }
+    }
 }
