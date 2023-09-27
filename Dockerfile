@@ -12,7 +12,9 @@ RUN apt-get update && apt-get install -y \
 build-essential 
 
 # Build the C++ application
-RUN cd llama.cpp && UNAME_M=arm64 UNAME_p=arm LLAMA_NO_METAL=1 make && chmod +x main
+RUN cd llama.cpp && make clean && UNAME_M=arm64 UNAME_p=arm LLAMA_NO_METAL=1 make 
+
+RUN chmod +x llama.cpp/main
 
 # Install Node.js dependencies
 RUN npm install 

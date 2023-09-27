@@ -1,3 +1,5 @@
+//server.js
+
 import express from 'express';
 import http from 'http';
 import { Server } from 'socket.io';
@@ -18,7 +20,8 @@ const io = new Server(server, {
     methods: ['GET', 'POST']
   }
 });
-const PORT = 80;
+const PORT = process.env.PORT || 80;
+
 
 app.use(bodyParser.json());
 
