@@ -9,10 +9,12 @@ public class SocketClient : MonoBehaviour
     public InputField inputField;
     public Button sendButton;
     public Text responseText;
+    
 
     private SocketIO socket;
     private const string ServerUrl = "http://localhost:80";
     private string responseBuffer = "";
+
 
     void Start()
     {
