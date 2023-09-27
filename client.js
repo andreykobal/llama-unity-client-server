@@ -3,7 +3,7 @@
 import { io } from "socket.io-client";
 import readline from "readline";
 
-const SERVER_URL = "https://my-llama-app-54f419ecaed8.herokuapp.com/"; 
+const SERVER_URL = "http://localhost:80"; 
 
 const socket = io(SERVER_URL, {
   reconnection: true,
