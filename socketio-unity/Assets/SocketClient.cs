@@ -1,23 +1,25 @@
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 using SocketIOClient;
 using System.Text.RegularExpressions;
-
+using System.Collections.Generic;
 
 public class SocketClient : MonoBehaviour
 {
-    public InputField inputField;
+    public TMP_InputField inputField;
     public Button sendButton;
-    public Text responseText;
-    
+    public TMP_Text responseText;    
 
     private SocketIO socket;
     private const string ServerUrl = "http://localhost:80";
     private string responseBuffer = "";
-
+    private readonly Queue<System.Action> _executeOnMainThread = new Queue<System.Action>();
 
     void Start()
     {
+        responseText.text = "";
+
         socket = new SocketIO(ServerUrl);
 
         // Assigning the SendButton click event to call the Send function.
@@ -32,6 +34,15 @@ public class SocketClient : MonoBehaviour
         socket.On("connect_timeout", (response) => Debug.LogError($"\nConnection timeout: {response.GetValue<string>()} ms"));
 
         socket.ConnectAsync();
+    }
+
+    void Update()
+    {
+        // Execute all actions on the main thread.
+        while (_executeOnMainThread.Count > 0)
+        {
+            _executeOnMainThread.Dequeue().Invoke();
+        }
     }
 
     // Added a handler for the OnConnected event.
@@ -50,8 +61,8 @@ public class SocketClient : MonoBehaviour
 
         Debug.Log("Received: " + received);
 
-        // Directly updating the UI text.
-        responseText.text += received;
+        // Queue the UI update to be executed on the main thread.
+        _executeOnMainThread.Enqueue(() => responseText.text += received);
     }
 
     // Send function to emit the message to the server.
